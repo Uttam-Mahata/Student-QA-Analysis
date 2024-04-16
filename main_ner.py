@@ -20,7 +20,7 @@ def score(val):
 nlp = spacy.load("en_core_web_sm")
 model = SentenceTransformer('all-MiniLM-L6-v2')
 result=defaultdict(obj)
-thres=0.6
+thres=0.66
 
 print("Started..")
 
@@ -81,6 +81,8 @@ for no in range(1,6):
     for k in range(1,len(lbl)+1):
         result[k][0] += (score(d[lbl[k-1]]))
         result[k][1] += (score(dd[k-1]))
+
+
 
 
 print(result)

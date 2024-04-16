@@ -30,7 +30,7 @@ for file_name in os.listdir(separate_csv_folder):
         scaled_df = pd.DataFrame(scaled_dataset, columns=dataset.columns)
 
         # Initialize the ClusterOptimizer with a threshold value
-        optimizer = ClusterOptimizer(scaled_df, threshold_value=0.75)
+        optimizer = ClusterOptimizer(scaled_df, threshold_value=0.9)
 
         # Get the cluster labels
         cluster_labels = optimizer.labels
