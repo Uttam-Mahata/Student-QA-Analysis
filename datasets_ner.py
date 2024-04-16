@@ -18,9 +18,6 @@ separate_csv_folder = 'ner_separate_csv_datasets'
 # Create the output folder if it doesn't exist
 os.makedirs(output_folder, exist_ok=True)
 
-# Define the CSV file path for storing the dataset
-csv_file_path = 'ner_complete_dataset.csv'
-
 # Define a function to compute the average vector for a list of vectors
 def compute_average_vector(vectors):
     return np.mean(vectors, axis=0)
@@ -38,7 +35,7 @@ for question_no in range(1, 6):
     for student_no in range(1, 46):
         answer_vectors = []
 
-        # Iterate through each answer file in the question folder
+        # Read the answer file
         answer_file_path = os.path.join(question_folder, f'answer{student_no}.txt')
         with open(answer_file_path, 'r', encoding='utf-8') as f:
             answer_sentences = [sentence.strip() for sentence in f.readlines()]
@@ -96,6 +93,7 @@ dataset_columns = ['Question', 'Student'] + [f'V{i}' for i in range(1, vector_le
 dataset = pd.DataFrame(dataset_rows, columns=dataset_columns)
 
 # Save the dataset to a CSV file
+csv_file_path = 'ner_complete_dataset.csv'
 dataset.to_csv(csv_file_path, index=False)
 
 # Create the separate CSV folder if it doesn't exist
