@@ -6,7 +6,7 @@ def generate_bar_graph(data, txt = "100%"):
     actual = [x[1] for x in data]
     width = 0.35  # the width of the bars
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(20, 10))
     x = range(len(predicted))
 
     rects1 = ax.bar(x, predicted, width, label='Predicted')
