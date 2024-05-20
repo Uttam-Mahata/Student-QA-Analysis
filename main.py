@@ -20,11 +20,11 @@ def score(val):
 nlp = spacy.load("en_core_web_sm")
 model = SentenceTransformer('all-MiniLM-L6-v2')
 result=defaultdict(obj)
-thres = 0.8
+thres = 0.65
 
 print("Started..")
 
-for no in range(1,6):
+for no in range(1,2):
     f = open(f'answers\\question{no}\\ref.txt',encoding='utf-8')
     a = f.read()
     lst_split = a.split('\n')
@@ -51,6 +51,7 @@ for no in range(1,6):
     data_f = optimizer.data_f
     lbl = optimizer.labels
     dc = Counter(lbl)
+    print(dc)
     d=[list() for i in range(len(dc))]
     dd=[]
 
